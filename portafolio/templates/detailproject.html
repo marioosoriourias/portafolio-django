@@ -1,0 +1,70 @@
+
+<!-- head para PC -->
+{% extends "base.html" %}
+
+{% load  static %}
+
+{% block title %}
+    {{ home.title }}
+{% endblock title %}
+
+{% block description %}
+    <meta name="description" content="{{ home.description }}">
+{% endblock description %}
+
+{% block content %}
+
+{% include "includes/header.html" %}
+
+
+<!------------------------- DETALLE PROYECTO -------------------------->
+<h1 class="text-4xl text-center mt-10">{{ project.name }}</h1>
+
+<div class="container mt-14 mb-10 md:mb-28 mx-auto grid grid-cols-1 md:grid-cols-2">
+    
+    <div>
+        <img class="sm:w-full lg:w-10/12 mx-auto" src="{{ project.image.url }}" alt="">
+    </div>
+
+    <div class="mt-12 md:mt-1 mx-3">     
+        <div class="mx-auto">
+            <div class="py-4 px-8 bg-gray-200 shadow-lg rounded-lg">
+                <div>
+                  <p class="text-2xl  text-justify">Sitio web donde podras obtener información sobre todos los servicios que realiza la clinica.</p>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="mx-auto mt-4">
+            <div class="pt-4 px-8 bg-gray-200  shadow-lg rounded-lg">
+                <div>
+                  <p class="inl text-2xl  text-justify">Tecnologias utilizadas.</p>
+                  <div class="flex mt-2 items-center">                   
+                      {% for habilidad in  project.skills.all %}                      
+                          <img class="ml-4 h-12 mb-4" src="{{ habilidad.image.url }}">
+                      {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <a href="https://github.com/marioosoriourias/ClinicaOdontologica" target="_blank" class="mt-10 flex content-center  w-full md:w-44  h-12 bg-gray-600 hover:bg-gray-800 text-white font-bold py-2 px-4 rounded">
+            <div class="mx-auto flex content-center ">
+                <span class="float-left my-auto">Ver en github</span>
+                <img  class="" src="{% static 'img/icons/github2.png' %}"/>
+            </div>
+        </a>
+    </div>
+
+</div>
+
+
+
+
+{% include "includes/footer.html" %}
+
+{% endblock content %}
+
+
